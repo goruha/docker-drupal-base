@@ -1,0 +1,10 @@
+sudo: required
+env:
+  secure: l4AFCygsxvgQyWrmGR9GN4raJxTPThTwWESpOtLo8BaPox0p9h2ZqKzo/xbaM7eIaqgqtxELgNtwp1m3pkHHlWmS0GQMLtGPd2NrBSpdixMQL72zg2zMEZlDGkb9e5uVYc6vyAnnbOypyc6GtIPFjPZ7qEb9wBAfIDT2HfMt7azjjsyUWYl23PTFbU+jwtopEogzLRLAGuVBs14Doo7iprlTw1kJ/gyZEfGpqiQr1QitUXJoi81Bgs+cSfZo9h8P3zbQtxdlSt3lqOXtm+7m6E/zEXhD7B5IeI4D9bZRNXqXXQbdAlJQESfYRJ51CfLVpysKsTqc5oThrpyxXGlRnENwa48nrZHZ8CFjAwPdhWD11HnAlDn9lDfFyV7a/Bmv9+WCzv1cqGLo/eeA5e80JyHlw4QuJmmJTTeEm8k4mZmQ89yQo2ETcKumkVxv0wx4JWLUTbhgjMv4q1/DiNhzNnHT9OpZ5ciVYC3M4+w7Am1hZuSVFXhBubWUxxQ2QB2UyIXH1F7X7m3yc4InRF90XlGKy7aERpaS9bkPe0QaSLbR++HHKHU3Zxwi0WV5FZ0M8dxTU8k4DXviHOG4S03WmvbROzeq43KIrFVniUBdWBCd/3CJuQWZYYSe/Hs3Ln+k7aey8ejr2sfbDJswgJYVmCyitOSnuc5sY1QomsKOGRA=
+services:
+- docker
+install:
+- docker login --email="$DOCKER_HUB_EMAIL" --username="$DOCKER_HUB_USERNAME" --password="$DOCKER_HUB_PASSWORD"
+script:
+- docker build -t $DOCKER_IMAGE_NAME .
+- if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; fi && docker push $DOCKER_IMAGE_NAME
