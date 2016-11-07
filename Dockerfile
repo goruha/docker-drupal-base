@@ -41,6 +41,7 @@ RUN echo 'http://alpine.gliderlabs.com/alpine/edge/main' > /etc/apk/repositories
       php5-xsl \
       php5-ldap \
       php5-bcmath \
+      php5-memcache \
       zip \
       nginx \
 	  && rm -rf /var/cache/apk/*
