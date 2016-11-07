@@ -84,8 +84,6 @@ RUN rm -rf /var/www/html && ln -s /drupal/www /var/www/html
 
 WORKDIR /drupal
 
-VOLUME ["/drupal/www/sites/default/files"]
-
 ENV DRUPAL_DATABASE drupal
 ENV DRUPAL_DATABASE_HOST db
 ENV DRUPAL_DATABASE_USER root
