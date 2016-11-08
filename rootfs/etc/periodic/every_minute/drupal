@@ -1,1 +1,2 @@
-drush --root /drupal/www cron-run
+#!/bin/sh
+drush --root=/drupal/www cron-run
