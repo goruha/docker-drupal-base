@@ -41,6 +41,7 @@ RUN echo 'http://alpine.gliderlabs.com/alpine/edge/main' > /etc/apk/repositories
       php5-xsl \
       php5-ldap \
       php5-bcmath \
+      php5-memcache \
       zip \
       nginx \
 	  && rm -rf /var/cache/apk/*
@@ -83,8 +84,6 @@ RUN mkdir /drupal && chmod -R 777 /drupal
 RUN rm -rf /var/www/html && ln -s /drupal/www /var/www/html
 
 WORKDIR /drupal
-
-VOLUME ["/drupal/www/sites/default/files"]
 
 ENV DRUPAL_DATABASE drupal
 ENV DRUPAL_DATABASE_HOST db
